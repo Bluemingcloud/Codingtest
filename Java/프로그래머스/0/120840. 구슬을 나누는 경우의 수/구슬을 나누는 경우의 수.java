@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 class Solution {
-  public long solution(int balls, int share) {
+  public int solution(int balls, int share) {
     if(balls == share) return 1;
     if(share == 1) return balls;
     if(balls - share == 1) return balls;
@@ -10,6 +10,6 @@ class Solution {
       arr[i] = new BigInteger(String.valueOf(i)).multiply(arr[i - 1]);
     }
     BigInteger answer = arr[balls].divide(arr[balls - share]).divide(arr[share]);
-    return answer.longValue();
+    return answer.intValue();
   }
 }
