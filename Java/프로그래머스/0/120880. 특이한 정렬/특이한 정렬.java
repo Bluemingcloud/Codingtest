@@ -1,26 +1,25 @@
 import java.util.*;
 class Solution {
     
-    // 선택 정렬
     public int[] solution(int[] numlist, int n) {
     	
-    	for(int i = 0; i < numlist.length - 1; i++) {
-    		for(int j = i + 1; j < numlist.length; j++) {
-                
-    		    int a = Math.abs(numlist[i] - n);
-    			int b = Math.abs(numlist[j] - n);
-    			if(a > b || (a == b && numlist[i] < numlist[j])) {
-    				
-    				int temp = numlist[i];
-    				numlist[i] = numlist[j];
-    				numlist[j] = temp;
-    				
-    			}
-    			
+    	PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>() {
+    		@Override
+    		public int compare(Integer o1, Integer o2) {
+    			if(Math.abs(o1.intValue() - n) == Math.abs(o2.intValue() - n)) return o2.intValue() - o1.intValue();
+    			return Math.abs(o1.intValue() - n) - Math.abs(o2.intValue() - n);
     		}
+		});
+    	
+    	for(int num : numlist) {
+    		queue.offer(num);
     	}
     	
-    	return numlist;
-
+        int[] answer = new int[numlist.length];
+        for(int i = 0; i < answer.length; i++) {
+            answer[i] = queue.poll();
+        }
+        
+    	return answer;
     }
 }
