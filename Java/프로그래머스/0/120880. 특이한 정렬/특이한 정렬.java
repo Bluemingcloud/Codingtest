@@ -1,18 +1,26 @@
 import java.util.*;
 class Solution {
+    
+    // 선택 정렬
     public int[] solution(int[] numlist, int n) {
-        Integer[] arr = Arrays.stream(numlist).boxed().toArray(Integer[]::new);
-        
-        Arrays.sort(arr, new Comparator<Integer>() {
-        	@Override
-        	public int compare(Integer o1, Integer o2) {
-        		if(Math.abs(o1.intValue() - n) == Math.abs(o2.intValue() - n)) {
-        			return o2.intValue() - o1.intValue();
-        		}
-        		return Math.abs(o1.intValue() - n) - Math.abs(o2.intValue() - n);
-        	}
-        });
-        
-        return Arrays.stream(arr).mapToInt(Integer::intValue).toArray();
+    	
+    	for(int i = 0; i < numlist.length - 1; i++) {
+    		for(int j = i + 1; j < numlist.length; j++) {
+                
+    		    int a = Math.abs(numlist[i] - n);
+    			int b = Math.abs(numlist[j] - n);
+    			if(a > b || (a == b && numlist[i] < numlist[j])) {
+    				
+    				int temp = numlist[i];
+    				numlist[i] = numlist[j];
+    				numlist[j] = temp;
+    				
+    			}
+    			
+    		}
+    	}
+    	
+    	return numlist;
+
     }
 }
