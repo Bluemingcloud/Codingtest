@@ -1,20 +1,7 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        
-        Arrays.sort(arr);
-        List<Integer> list = new ArrayList<>();
-        for(int a : arr) {
-            if(a % divisor == 0) list.add(a);
-        }
-        
-        if(list.isEmpty()) return new int[] {-1};
-        
-        int[] answer = new int[list.size()];
-        for(int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
-        }
-        
-        return answer;
+        int[] answer = Arrays.stream(arr).filter(a -> a % divisor == 0).sorted().toArray();
+        return answer.length != 0 ? answer : new int[] {-1};
     }
 }
