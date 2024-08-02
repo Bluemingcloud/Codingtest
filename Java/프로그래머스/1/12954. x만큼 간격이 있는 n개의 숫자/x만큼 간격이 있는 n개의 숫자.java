@@ -1,21 +1,12 @@
 class Solution {
-    long[] answer;
-    int idx = 0;
+    
     public long[] solution(int x, int n) {
-        answer = new long[n];
-        answer = makeList(x);
+        long[] answer = new long[n];
+        answer[0] = x;
+        for(int i = 1; i < n; i++) {
+            answer[i] = answer[i - 1] + x;
+        }
         return answer;
     }
-    
-    public long[] makeList(int x) {
-        if(idx == answer.length) return answer;
-        if(idx == 0) {
-            answer[idx] = x;
-            idx++;
-            return makeList(x);
-        }
-        answer[idx] = answer[idx - 1] + x;
-        idx++;
-        return makeList(x);
-    }
+
 }
