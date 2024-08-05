@@ -1,11 +1,7 @@
 class Solution {
     public long solution(int price, int money, int count) {
-        long answer = -1;
-        long check = 0;
-        for(int i = 1; i <= count; i++) {
-            check += i * price; 
-        }
-        if(check <= money) return 0;
-        return check - money;
+        // 1 부터 count 까지 합 * price
+        long answer = (long)price * (count * (count + 1) / 2) - money;
+        return answer >= 0 ? answer : 0;
     }
 }
