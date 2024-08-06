@@ -1,4 +1,3 @@
-import java.util.*;
 class Solution {
     int answer = 0;
     int[] visited;
@@ -22,6 +21,5 @@ class Solution {
                 visited[i] = 0;
             }
         }
-    
     }
 }
