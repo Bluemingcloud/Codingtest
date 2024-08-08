@@ -10,21 +10,19 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		br.close();
         
-		Queue<Integer> queue = new PriorityQueue<>();
+		int[] pArr = new int[n];
 		for(int i = 0; i < n; i++) {
-			queue.offer(Integer.parseInt(st.nextToken()));
+			pArr[i] = Integer.parseInt(st.nextToken());
 		}
-		
-		int[] pArr = new int[queue.size() + 1];
-		pArr[0] = 0;
+        
+        Arrays.sort(pArr);
+        
+        int result = pArr[0];
 		for(int i = 1; i < pArr.length; i++) {
-			pArr[i] = pArr[i - 1] + queue.poll();
+			pArr[i] += pArr[i - 1];
+            result += pArr[i];
 		}
-		
-		int result = 0;
-		for(int p : pArr) {
-			result += p;
-		}
+
 		System.out.println(result);
 	}
 }
