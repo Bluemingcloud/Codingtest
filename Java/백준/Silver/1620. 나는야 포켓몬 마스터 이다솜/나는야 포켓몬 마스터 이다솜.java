@@ -3,11 +3,10 @@ import java.util.*;
 
 public class Main {
 	
-	public static void main(String[] args) throws IOException {
+		public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
+		StringBuilder sb = new StringBuilder();
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
@@ -23,15 +22,14 @@ public class Main {
 		for(int i = 0; i < m; i++) {
 			String str = br.readLine(); 
 			try {
-				bw.write(mapInt.get(Integer.parseInt(str)));
+				sb.append(mapInt.get(Integer.parseInt(str)));
 			} catch (NumberFormatException e) {
-				bw.write(mapStr.get(str).toString());
+				sb.append(mapStr.get(str));
 			} finally {
-				bw.write("\n");
+				sb.append("\n");
 			}
 		}
-		bw.flush();
-		bw.close();
+		System.out.println(sb.toString());
 		br.close();	
 	}
 }
