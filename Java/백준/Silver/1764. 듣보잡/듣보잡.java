@@ -11,7 +11,7 @@ public class Main {
 		int m = Integer.parseInt(st.nextToken());
 		
 		Map<String, Integer> map = new HashMap<>();
-		Queue<String> queue = new PriorityQueue<>();
+		Map<String, Integer> mapResult = new TreeMap<>();
 		
 		for(int i = 0; i < n; i++) {
 			map.put(br.readLine(), i);
@@ -20,15 +20,15 @@ public class Main {
 		for(int i = 0; i < m; i++) {
 			String name = br.readLine();
 			if(map.containsKey(name)) {
-				queue.offer(name);
+				mapResult.put(name, i);
 			}
 		}
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(queue.size()).append("\n");
-		while(queue.size() != 0) {
-			sb.append(queue.poll()).append("\n");
-		}
+		sb.append(mapResult.size()).append("\n");
+		for(String key : mapResult.keySet()) {
+            sb.append(key).append("\n");
+        }
 		System.out.println(sb.toString());
 		br.close();
 	}
