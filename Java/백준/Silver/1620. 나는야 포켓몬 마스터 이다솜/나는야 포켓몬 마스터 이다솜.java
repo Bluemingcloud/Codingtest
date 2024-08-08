@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 	
-		public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -21,13 +21,12 @@ public class Main {
 		
 		for(int i = 0; i < m; i++) {
 			String str = br.readLine(); 
-			try {
+			if(49 <= str.charAt(0) && str.charAt(0) <= 57) {
 				sb.append(mapInt.get(Integer.parseInt(str)));
-			} catch (NumberFormatException e) {
+			} else {
 				sb.append(mapStr.get(str));
-			} finally {
-				sb.append("\n");
 			}
+			sb.append("\n");
 		}
 		System.out.println(sb.toString());
 		br.close();	
