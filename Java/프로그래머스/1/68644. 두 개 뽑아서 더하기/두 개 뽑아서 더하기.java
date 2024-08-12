@@ -1,16 +1,13 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] numbers) {
-        boolean[] num = new boolean[201];
+        Set<Integer> set = new HashSet<>();
         for(int i = 0; i < numbers.length; i++) {
             for(int j = i + 1; j < numbers.length; j++) {
-                if(!num[(numbers[i] + numbers[j])]) num[(numbers[i] + numbers[j])] = true;
+                set.add(numbers[i] + numbers[j]);
             }
         }
-        List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < num.length; i++) {
-            if(num[i]) list.add(i);
-        }
-        return list.stream().mapToInt(i -> i).toArray();
+        
+        return set.stream().sorted().mapToInt(i -> i).toArray();
     }
 }
