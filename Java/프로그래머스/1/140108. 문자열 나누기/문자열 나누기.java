@@ -1,32 +1,21 @@
 class Solution {
     public int solution(String s) {
         int answer = 0;
-
-        while(!s.equals("")) {
-            int idx = 0;
-            int t = 0;
-            int f = 0;
-            char c = s.charAt(idx);
-            for(int i = 0; i < s.length(); i++) {
-                if(s.charAt(i) == c) {
-                    t++;
-                } else {
-                    f++;
-                }
-                
-                if(t == f) {
-                    t = 0;
-                    f = 0;
-                    idx = i;
-                    break;
-                }
+        char x = ' ';
+        int check = 0;
+        for(char c : s.toCharArray()) {
+            if(check == 0) x = c;
+            
+            if(x == c) check++;
+            else check--;
+            
+            if(check == 0) {
+                answer++;
             }
             
-            s = s.substring(idx + 1);
-            answer++;
-            if(t != f) break;
         }
         
-        return answer;
+        
+        return check > 0 ? answer + 1 : answer;
     }
 }
